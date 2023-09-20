@@ -2,8 +2,10 @@ altair==5.0.1
 numpy==1.25.1
 matplotlib==3.7.1
 openpyxl==3.1.2
+packaging==23.1
 pandas==2.0.3
 Pillow==9.5.0
+plotly==5.16.1
 python-decouple==3.8
 scipy==1.10.1
 spectral==0.23.1
@@ -11,4 +13,5 @@ streamlit==1.25.0
 streamlit-aggrid==0.3.4.post3
 streamlit-option-menu==0.3.2
 streamlit-tags==1.2.8
+tenacity==8.2.2
 xlrd==2.0.1
