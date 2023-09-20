@@ -25,5 +25,5 @@ If you use the dataset and/or the visualisation, please cite the following artic
 
 
 ## Contact
-Hilda Deborah hilda.deborah@ntnu.no
+Hilda Deborah on Twitter/X [@tobinghd](https://twitter.com/tobinghd) or by email hilda.deborah@ntnu.no
 
