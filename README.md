@@ -1,11 +1,11 @@
 # HypPigments | Hyperspectral Pigments interactive visualisation
 
-This is the interactive visualisation of Hyperspectral Pigments dataset, powered by Streamlit. The full dataset is available on Zenodo: https://doi.org/10.5281/zenodo.5592485.
+This is the interactive visualisation of a part of the Hyperspectral Pigments Dataset, powered by Streamlit. The full dataset is available on Zenodo: https://doi.org/10.5281/zenodo.5592485.
 
 
 ## License
-
-Hyperspectral Pigments Dataset was licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/legalcode).\
+The Streamlit visualisation (this repository) of the dataset is licensed under MIT license.\
+Hyperspectral Pigments Dataset is licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/legalcode).\
 Streamlit is completely free and open-source and licensed under the [Apache 2.0](https://www.apache.org/licenses/LICENSE-2.0) license.
 
 ## Citation
