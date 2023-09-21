@@ -1,6 +1,6 @@
 # Vis-HypPigments | Hyperspectral Pigments interactive visualisation
 
-This is the interactive visualisation of a part of the Hyperspectral Pigments Dataset, powered by Streamlit. The full dataset is available on Zenodo: https://doi.org/10.5281/zenodo.5592485.
+This is the interactive visualisation of a part of the Hyperspectral Pigments Dataset https://hyppigments.streamlit.app/, powered by Streamlit. The full dataset is available on Zenodo: https://doi.org/10.5281/zenodo.5592485.
 
 
 ## License
