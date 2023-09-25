@@ -80,6 +80,7 @@ def single_mode(df):
 
     grid_table = AgGrid(
         df.iloc[:, [0,1,2,5]], gridOptions=grid_options, 
+        enable_enterprise_modules=False,
         columns_auto_size_mode=ColumnsAutoSizeMode.FIT_ALL_COLUMNS_TO_VIEW)
     if grid_table['selected_rows']:
         pid = grid_table['selected_rows'][0]['fid']
