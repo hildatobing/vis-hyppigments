@@ -15,7 +15,7 @@ python-dateutil==2.8.2
 python-decouple==3.8
 scipy==1.10.1
 spectral==0.23.1
-streamlit==1.25.0
+streamlit==1.27.0
 streamlit-aggrid==0.3.4.post3
 streamlit-option-menu==0.3.2
 streamlit-tags==1.2.8
