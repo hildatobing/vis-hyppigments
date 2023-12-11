@@ -75,14 +75,10 @@ def plot(df, first_render=False, mode='single'):
     fig.update_yaxes(range=[-.01, 1.01])
     st.plotly_chart(fig)
     
-    disable = True if first_render else False
     hdr = ['Wavelength'] + pids
     data = pd.DataFrame.from_dict(
         dict(zip(hdr, spectra))).to_csv(index=False).encode('utf-8')
-    with download_button_area:
-        st.download_button(
-            label='Download spectra as CSV', data=data, file_name='spectra.csv', 
-            mime='text/csv', disabled=disable)
+    return hdr, data
 
 
 def single_mode(df):
@@ -101,8 +97,13 @@ def single_mode(df):
         pid = grid_table['selected_rows'][0]['fid']
         sel_pigments = df[df['fid'] == pid]
         
+        hdr, data = '', None
         with plot_area:
-            plot(sel_pigments, first_render=False, mode='single')
+            hdr, data = plot(sel_pigments, first_render=False, mode='single')
+        with download_button_area:
+            st.download_button(
+                label='Download spectra as CSV', data=data, file_name='spectra.csv', 
+                mime='text/csv')
 
 
 def compare_mode(df):
@@ -118,8 +119,15 @@ def compare_mode(df):
         enable_enterprise_modules=False, 
         columns_auto_size_mode=ColumnsAutoSizeMode.FIT_ALL_COLUMNS_TO_VIEW)
     if grid_table['selected_rows']:
+        hdr, data = '', None
         with plot_area:
-            plot(grid_table['selected_rows'], first_render=False, mode='compare')
+            hdr, data = plot(
+                grid_table['selected_rows'], first_render=False, mode='compare')
+        
+        with download_button_area:
+            st.download_button(
+                label='Download spectra as CSV', data=data, 
+                file_name='spectra.csv', mime='text/csv')
 
 
 st.set_page_config(page_title="Hyperspectral Pigments")
