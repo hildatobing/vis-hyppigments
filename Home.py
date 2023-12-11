@@ -40,6 +40,8 @@ def plot(df, first_render=False, mode='single'):
     fc = 'Data/__colorlib_averages.pickle'
     cols = pd.read_pickle(fc)
 
+    spectra = [wvl]
+    pids = []
     fig = go.Figure()
     if not first_render:
         if mode == 'single':
@@ -51,6 +53,8 @@ def plot(df, first_render=False, mode='single'):
                 fig.add_trace(go.Scatter(
                     x=wvl, y=sli.spectra[pnames.index(pid), :], 
                     name=name+str(i), line=dict(color=col,width=3)))
+                spectra.append(sli.spectra[pnames.index(pid), :])
+                pids.append(df.iloc[0]['Pigment number'] + ' sh-' + str(i))
         elif mode == 'compare':
             for sel_row in df:
                 name = sel_row['Pigment name']
@@ -59,6 +63,8 @@ def plot(df, first_render=False, mode='single'):
                 fig.add_trace(go.Scatter(
                     x=wvl, y=sli.spectra[pnames.index(pid), :], 
                     name=name, line=dict(color=col,width=3)))
+                spectra.append(sli.spectra[pnames.index(pid), :])
+                pids.append(sel_row['Pigment number'])
             fig['data'][0]['showlegend'] = True
 
     fig.update_layout(
@@ -68,6 +74,15 @@ def plot(df, first_render=False, mode='single'):
     )
     fig.update_yaxes(range=[-.01, 1.01])
     st.plotly_chart(fig)
+    
+    disable = True if first_render else False
+    hdr = ['Wavelength'] + pids
+    data = pd.DataFrame.from_dict(
+        dict(zip(hdr, spectra))).to_csv(index=False).encode('utf-8')
+    with download_button_area:
+        st.download_button(
+            label='Download spectra as CSV', data=data, file_name='spectra.csv', 
+            mime='text/csv', disabled=disable)
 
 
 def single_mode(df):
@@ -85,6 +100,7 @@ def single_mode(df):
     if grid_table['selected_rows']:
         pid = grid_table['selected_rows'][0]['fid']
         sel_pigments = df[df['fid'] == pid]
+        
         with plot_area:
             plot(sel_pigments, first_render=False, mode='single')
 
@@ -132,6 +148,7 @@ if __name__ == '__main__':
 
     instr_area = st.empty()
     plot_area = st.empty()
+    download_button_area = st.empty()
     table_instr_area = st.empty()
     table_area = st.empty()
 
